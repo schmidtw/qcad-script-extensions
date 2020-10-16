@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ShaperExport</class>
+ <widget class="QDialog" name="ShaperExport">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>660</width>
+    <height>562</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Shaper Origin Exporter</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QGroupBox" name="layerBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Layer Configuration</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="InteriorCutsLayerLabel">
+        <property name="text">
+         <string>Interior Cuts Layer:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="InteriorCutsLayerComboBox">
+        <property name="toolTip">
+         <string>A layer name matching .*shaper.*internal. will automatically find the layer.
+Only Hash objects will be used.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="ExteriorCutsLayerLabel">
+        <property name="text">
+         <string>Exterior Cuts Layer:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="ExteriorCutsLayerComboBox">
+        <property name="toolTip">
+         <string>A layer name matching .*shaper.*exterior.* will automatically find the layer.
+Only Hash objects will be used.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="OnLineCutsLayerLabel">
+        <property name="text">
+         <string>On Line Cuts Layer:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="OnLineCutsLayerComboBox">
+        <property name="toolTip">
+         <string>A layer name matching .*shaper.*on.line.* will automatically find the layer.
+Lines, Polylines, Arcs, Circles, Ellipses, Splines, Text are supported.
+(Explode dimensions for accurate rendering.)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="PocketingCutsLayerLabel">
+        <property name="text">
+         <string>Pocketing Cuts Layer:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="PocketingCutsLayerComboBox">
+        <property name="toolTip">
+         <string>A layer name matching .*shaper.*pocket.* will automatically find the layer.
+Only Hash objects will be used.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="GuideNotesLayerLabel">
+        <property name="text">
+         <string>Guide / Notes Layer:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="GuideLayerComboBox">
+        <property name="toolTip">
+         <string>A layer name matching .*shaper.*guide.* will automatically find the layer.
+All drawable objects are supported.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="Configuration">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Output Configuration</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <layout class="QFormLayout" name="_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="OutputUnitsLabel">
+        <property name="text">
+         <string>Output Units:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy">
+         <cstring>OutputUnitsComboBox</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="OutputUnitsComboBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="StrokeWidthLabel">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Stroke width in Units:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="RMathComboBox" name="StrokeComboBox" native="true"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="PaddingWidthLabel">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Padding width in Units:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="RMathComboBox" name="PaddingComboBox" native="true"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="OutputFileLabel">
+        <property name="text">
+         <string>Output file:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLineEdit" name="OutputFileInput"/>
+        </item>
+        <item>
+         <widget class="QToolButton" name="OutputFileToolButton">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RMathComboBox</class>
+   <extends>QWidget</extends>
+   <header>rmathcombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>OutputUnitsComboBox</tabstop>
+  <tabstop>InteriorCutsLayerComboBox</tabstop>
+  <tabstop>ExteriorCutsLayerComboBox</tabstop>
+  <tabstop>OnLineCutsLayerComboBox</tabstop>
+  <tabstop>PocketingCutsLayerComboBox</tabstop>
+  <tabstop>GuideLayerComboBox</tabstop>
+  <tabstop>OutputFileInput</tabstop>
+  <tabstop>OutputFileToolButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ShaperExport</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>274</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ShaperExport</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>236</x>
+     <y>209</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
