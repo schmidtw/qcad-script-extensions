@@ -475,6 +475,29 @@ function renderArcPath( arc ) {
 
 
 /**
+ *  Render the specified circle shape.
+ *
+ *  @param circle the circle to render
+ *
+ *  @return the path describing the circle
+ */
+function renderCirclePath( circle ) {
+    var dir = { 'sweep': 1,
+                'large': 0 };
+
+    var r = arc.getRadius();
+
+    var p1 = arc.getPointAtAngle(0);
+    var p2 = arc.getPointAtAngle(Math.PI);
+    var a1 = printAbsArcPath( r, r, 0, dir.large, dir.sweep, p2.getX(), p2.getY() );
+    var a2 = printAbsArcPath( r, r, 0, dir.large, dir.sweep, p1.getX(), p1.getY() );
+    a2 = a2.concat( " Z " );
+    return a1.concat( a2 );
+}
+
+
+
+/**
  *  Render the specified ellipse shape.
  *
  *  @param ellipse the ellipse to render
@@ -625,6 +648,9 @@ function renderUnknownShapePath( shape ) {
             //EAction.handleUserMessage(qsTr("RShape.Arc\n"));
             return renderArcPath( shape );
 
+        case RShape.Circle:     // 3
+            return renderCirclePath( shape );
+
         case RShape.Ellipse:    // 4
             //EAction.handleUserMessage(qsTr("RShape.Ellipse\n"));
             return renderEllipsePath( shape );
@@ -637,11 +663,10 @@ function renderUnknownShapePath( shape ) {
             //EAction.handleUserMessage(qsTr("RShape.Spline\n"));
             return renderSplinePath( shape );
 
-        case RShape.Triangle:   //  7
+        case RShape.Triangle:   // 7
             //EAction.handleUserMessage(qsTr("RShape.Triangle\n"));
             return renderTrianglePath( shape );
 
-        //case RShape.Circle:   //  3
         default:
             EAction.handleUserMessage(qsTr("RShape.Unknown: %1\n").arg(shape.getShapeType()));
     }
