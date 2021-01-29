@@ -485,10 +485,10 @@ function renderCirclePath( circle ) {
     var dir = { 'sweep': 1,
                 'large': 0 };
 
-    var r = arc.getRadius();
+    var r = circle.getRadius();
 
-    var p1 = arc.getPointAtAngle(0);
-    var p2 = arc.getPointAtAngle(Math.PI);
+    var p1 = circle.getPointAtAngle(0);
+    var p2 = circle.getPointAtAngle(Math.PI);
     var a1 = printAbsArcPath( r, r, 0, dir.large, dir.sweep, p2.getX(), p2.getY() );
     var a2 = printAbsArcPath( r, r, 0, dir.large, dir.sweep, p1.getX(), p1.getY() );
     a2 = a2.concat( " Z " );
