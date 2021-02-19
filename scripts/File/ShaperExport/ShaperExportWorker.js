@@ -482,10 +482,11 @@ function renderArcPath( arc ) {
  *  @return the path describing the circle
  */
 function renderCirclePath( circle ) {
-    var dir = { 'sweep': 1,
-                'large': 0 };
-
     var r = circle.getRadius();
+
+    var arc = new RArc(circle.getCenter(), r, 0.0, 0.0);
+
+    var dir = calcLargeSweep( arc );
 
     var p1 = circle.getPointAtAngle(0);
     var p2 = circle.getPointAtAngle(Math.PI);
