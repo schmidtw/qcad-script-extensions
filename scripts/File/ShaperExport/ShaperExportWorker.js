@@ -484,15 +484,12 @@ function renderArcPath( arc ) {
 function renderCirclePath( circle ) {
     var r = circle.getRadius();
 
-    var arc = new RArc(circle.getCenter(), r, 0.0, 0.0);
+    var arc1 = new RArc(circle.getCenter(), r, 0.0, Math.PI);
+    var arc2 = new RArc(circle.getCenter(), r, Math.PI, 2*Math.PI);
 
-    var dir = calcLargeSweep( arc );
+    var a1 = renderArcPath( arc1 );
+    var a2 = renderArcPath( arc2 );
 
-    var p1 = circle.getPointAtAngle(0);
-    var p2 = circle.getPointAtAngle(Math.PI);
-    var a1 = printAbsArcPath( r, r, 0, dir.large, dir.sweep, p2.getX(), p2.getY() );
-    var a2 = printAbsArcPath( r, r, 0, dir.large, dir.sweep, p1.getX(), p1.getY() );
-    a2 = a2.concat( " Z " );
     return a1.concat( a2 );
 }
 
